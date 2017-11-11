@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import ProjectWorldFramework
+@testable import ProjectWorld_Weather
 
 class ProjectWorld_WeatherUITests: XCTestCase {
         

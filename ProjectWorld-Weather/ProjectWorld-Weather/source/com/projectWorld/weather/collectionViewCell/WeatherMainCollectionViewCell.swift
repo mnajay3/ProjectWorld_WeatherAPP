@@ -67,7 +67,6 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
             }
         }
         if self.weatherStatus != nil {
-            //Make sure not to force unwrap
             if let weather = data?.weather, weather.count > 0, let mainStatus = weather[0].main{
                 self.weatherStatus.text = mainStatus
                 persistLastSearch.set(mainStatus, forKey: "weather")
@@ -80,7 +79,10 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                 self.temparature.text = getConvertedTemp(temp: temp)
                 persistLastSearch.set(temp, forKey: "temp")
             } else if let temp = persistLastSearch.value(forKey: "temp") {
-                self.temparature.text = getConvertedTemp(temp: temp as! NSNumber)
+                if let temp = temp as? NSNumber {
+                    self.temparature.text = getConvertedTemp(temp: temp)
+                }
+                
             }
         }
         if self.todayLabel != nil {
@@ -99,7 +101,9 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                 self.minTemp.text = getConvertedTemp(temp: temp)
                 persistLastSearch.set(temp, forKey: "temp_min")
             } else if let temp = persistLastSearch.value(forKey: "temp_min") {
-                self.minTemp.text = getConvertedTemp(temp: temp as! NSNumber)
+                if let temp = temp as? NSNumber {
+                    self.minTemp.text = getConvertedTemp(temp: temp)
+                }
             }
         }
         if self.maxTemp != nil {
@@ -107,7 +111,9 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                 self.maxTemp.text = getConvertedTemp(temp: temp)
                 persistLastSearch.set(temp, forKey: "temp_max")
             } else if let temp = persistLastSearch.value(forKey: "temp_max") {
-                self.maxTemp.text = getConvertedTemp(temp: temp as! NSNumber)
+                if let temp = temp as? NSNumber {
+                    self.maxTemp.text = getConvertedTemp(temp: temp)
+                }
             }
         }
         if self.weatherIcon != nil {
@@ -115,7 +121,7 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                 self.weatherIcon.image = image
                 self.weatherIcon.translatesAutoresizingMaskIntoConstraints = false
                 self.weatherIcon.tintColor = UIColor(white: 1, alpha: 0.4)
-///               While it is possible to save a UIImage to NSUserDefaults, it is often not recommended as it is not        the most efficient way to save images; a more efficient way is to save your image in the application's Documents Directory
+                ///               While it is possible to save a UIImage to NSUserDefaults, it is often not recommended as it is not        the most efficient way to save images; a more efficient way is to save your image in the application's Documents Directory
                 ///
                 persistLastSearch.set(UIImagePNGRepresentation(image), forKey: "imageIcon")
             }else if let imageData = persistLastSearch.object(forKey: "imageIcon") ,
@@ -128,11 +134,9 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     }
     
     func getConvertedTemp(temp: NSNumber) -> String {
-        if let tempKelvin = temp as? Double {
-            let tempCelcius = Int(tempKelvin - 273.15)
-            return "\(tempCelcius)"
-        }
-        return "NA"
+        let tempKelvin = Double(truncating: temp)
+        let tempCelcius = Int(tempKelvin - 273.15)
+        return "\(tempCelcius)"
     }
     
     func addGestureConfiguratios() {

@@ -10,7 +10,7 @@
 import UIKit
 import ProjectWorldFramework
 
-typealias JSON = [String: AnyObject]
+public typealias JSON = [String: AnyObject]
 
 //Singleton desing Pattern
 //I am using Singleton pattern, since I don't want to allow clients to create multiple object to rushOver the my service invoker.

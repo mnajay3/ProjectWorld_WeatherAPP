@@ -64,9 +64,5 @@ class ProjectWorld_WeatherTests: XCTestCase {
             XCTAssertNotNil(resultData)
         }
     }
-    func testServiceWithJsonValidData() {
-        let viewModal = WeatherViewModel()
-//        viewModal.processJsonResponseData(json: kMockServiceValid)
-    }
     
 }

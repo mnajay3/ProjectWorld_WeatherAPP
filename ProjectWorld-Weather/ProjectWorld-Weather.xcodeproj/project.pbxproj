@@ -28,6 +28,8 @@
 		B2AAAEBD1FB704E500C0FAB4 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AAAE971FB5253800C0FAB4 /* WeatherInfo.plist */; };
 		B2AAAEBF1FB706D700C0FAB4 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AAAEBE1FB706D700C0FAB4 /* WeatherInfo.plist */; };
 		B2AAAEC11FB712B400C0FAB4 /* MockServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAAEC01FB712B400C0FAB4 /* MockServiceData.swift */; };
+		B2AAAEC31FB74FA700C0FAB4 /* ProjectWorldServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAAEC21FB74FA700C0FAB4 /* ProjectWorldServiceTests.swift */; };
+		B2AAAEC51FB76C0E00C0FAB4 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2AAAEC41FB76C0E00C0FAB4 /* WeatherInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		B2AAAEB41FB6E6B200C0FAB4 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		B2AAAEBE1FB706D700C0FAB4 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		B2AAAEC01FB712B400C0FAB4 /* MockServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceData.swift; sourceTree = "<group>"; };
+		B2AAAEC21FB74FA700C0FAB4 /* ProjectWorldServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWorldServiceTests.swift; sourceTree = "<group>"; };
+		B2AAAEC41FB76C0E00C0FAB4 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B2AAAE5E1FB4B15400C0FAB4 /* ProjectWorld_WeatherTests.swift */,
+				B2AAAEC21FB74FA700C0FAB4 /* ProjectWorldServiceTests.swift */,
 				B2AAAE601FB4B15400C0FAB4 /* Info.plist */,
 				B2AAAEBE1FB706D700C0FAB4 /* WeatherInfo.plist */,
 			);
@@ -167,6 +172,7 @@
 			children = (
 				B2AAAE691FB4B15500C0FAB4 /* ProjectWorld_WeatherUITests.swift */,
 				B2AAAE6B1FB4B15500C0FAB4 /* Info.plist */,
+				B2AAAEC41FB76C0E00C0FAB4 /* WeatherInfo.plist */,
 			);
 			path = "ProjectWorld-WeatherUITests";
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2AAAEBD1FB704E500C0FAB4 /* WeatherInfo.plist in Resources */,
+				B2AAAEC51FB76C0E00C0FAB4 /* WeatherInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2AAAEC31FB74FA700C0FAB4 /* ProjectWorldServiceTests.swift in Sources */,
 				B2AAAE5F1FB4B15400C0FAB4 /* ProjectWorld_WeatherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

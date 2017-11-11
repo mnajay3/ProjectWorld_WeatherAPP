@@ -13,6 +13,7 @@ import UIKit
 class WeatherViewModel: NSObject {
     
     var weatherInfoResponse: WeatherInfoResponse?
+    var numOfItemsInSection = 1
     var weatherDictionary: JSON = {
         return JSON()
     }()
@@ -46,7 +47,6 @@ class WeatherViewModel: NSObject {
          KVO:KeyValue Observing design pattern
          Here I am following KVO pattern
          **/
-        print(json)
         self.weatherInfoResponse = WeatherInfoResponse(json: json)
     }
     
