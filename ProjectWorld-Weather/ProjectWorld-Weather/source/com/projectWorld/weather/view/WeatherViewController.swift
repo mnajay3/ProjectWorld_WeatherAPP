@@ -179,6 +179,11 @@ class WeatherViewController: MasterViewController,UICollectionViewDelegate,UICol
     //This Perticular method get called from UICollection view cell after click on find Weather for perticular city
     func getDesiredCityInformation(data city: String?) {
         guard let city = city else { return }
+        if city.isEmpty || city == "" {
+            let alert = UIAlertController(title: "Required", message: "Plese enter the City Name", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         fetchWeatherReport(input: city)
     }
     

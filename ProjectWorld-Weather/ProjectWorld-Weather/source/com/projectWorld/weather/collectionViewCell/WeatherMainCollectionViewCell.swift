@@ -26,6 +26,8 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var minTemp: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     
+    @IBOutlet weak var bufferLine: UIView!
+    @IBOutlet weak var degree: UILabel!
     //To persist user's last saved search
     lazy var persistLastSearch: UserDefaults = UserDefaults.standard
     var isContentViewHidden: Bool = true
@@ -77,10 +79,12 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
         if self.temparature != nil {
             if let temp = data?.main?.temp {
                 self.temparature.text = getConvertedTemp(temp: temp)
+                self.degree.isHidden = false
                 persistLastSearch.set(temp, forKey: "temp")
             } else if let temp = persistLastSearch.value(forKey: "temp") {
                 if let temp = temp as? NSNumber {
                     self.temparature.text = getConvertedTemp(temp: temp)
+                    self.degree.isHidden = false
                 }
                 
             }
@@ -90,10 +94,12 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
         }
         if self.dayName != nil {
             if let weekDayName = data?.weekDayName {
+                self.todayLabel.isHidden = false
                 self.dayName.text = weekDayName
                 persistLastSearch.set(weekDayName, forKey: "weekDayName")
             } else if let weekDayName = persistLastSearch.value(forKey: "weekDayName") {
                 self.dayName.text = weekDayName as? String ?? ""
+                self.todayLabel.isHidden = false
             }
         }
         if self.minTemp != nil {
@@ -110,9 +116,11 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
             if let temp = data?.main?.temp_max {
                 self.maxTemp.text = getConvertedTemp(temp: temp)
                 persistLastSearch.set(temp, forKey: "temp_max")
+                self.bufferLine.isHidden = false
             } else if let temp = persistLastSearch.value(forKey: "temp_max") {
                 if let temp = temp as? NSNumber {
                     self.maxTemp.text = getConvertedTemp(temp: temp)
+                    self.bufferLine.isHidden = false
                 }
             }
         }
@@ -146,9 +154,12 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
             self.findWeather.translatesAutoresizingMaskIntoConstraints = false
             self.findWeather.titleLabel?.text = "Find"
             controlView.backgroundColor = UIColor(white: 0.9, alpha: 0.2)
+            controlView.layer.cornerRadius = self.controlView.frame.height / 2 - 5
             self.textField.backgroundColor = UIColor(white: 0.9, alpha: 1)
             self.controlLabel.textColor = UIColor(white: 0.9, alpha: 1)
             self.findWeather.titleLabel?.textColor = UIColor(white: 0.9, alpha: 1)
+            self.findWeather.backgroundColor = UIColor(white: 0.5, alpha: 1)
+            self.findWeather.layer.cornerRadius = self.findWeather.frame.height / 2 - 5
             controlView.isHidden = true
             isContentViewHidden = true
         }
@@ -171,6 +182,7 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                     self.textField.backgroundColor = UIColor(white: 0.9, alpha: 1)
                     self.controlLabel.textColor = UIColor(white: 0.9, alpha: 1)
                     self.findWeather.titleLabel?.textColor = UIColor(white: 0.9, alpha: 1)
+                    self.findWeather.backgroundColor = UIColor(white: 0.5, alpha: 1)
                 }) { (isanimationCompleted) in
                     //NOOP
                 }
@@ -181,6 +193,7 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
                     self.controlView.backgroundColor = UIColor(white: 0, alpha: 0)
                     self.textField.backgroundColor = UIColor(white: 0, alpha: 0)
                     self.controlLabel.textColor = UIColor(white: 0, alpha: 0)
+                    self.findWeather.backgroundColor = UIColor(white: 0, alpha: 0)
                 }) { (isanimationCompleted) in
                     self.controlView.isHidden = true
                     self.isContentViewHidden = true

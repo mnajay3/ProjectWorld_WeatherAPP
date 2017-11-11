@@ -35,6 +35,7 @@ class WeatherDetailViewController: UIViewController {
         button.setTitle("Back", for: .normal)
         button.titleLabel?.textColor = .white
         button.backgroundColor = UIColor(white: 0.9, alpha: 0.5)
+        button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(handleButton), for: .touchUpInside)
         return button
     }()
@@ -53,6 +54,12 @@ class WeatherDetailViewController: UIViewController {
         self.containerView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15).isActive = true
         self.containerView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15).isActive = true
         self.containerView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        
+        self.backButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        self.demonstrationLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true
+        self.backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 15).isActive = true
+        self.backButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        self.backButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         self.demonstrationLabel.leftAnchor.constraint(equalTo: self.containerView.leftAnchor).isActive = true
         self.demonstrationLabel.rightAnchor.constraint(equalTo: self.containerView.rightAnchor).isActive = true

@@ -73,7 +73,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39v-sg-5rb">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39v-sg-5rb">
                                                     <rect key="frame" x="210" y="207" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="LPd-QH-XDC"/>
@@ -93,13 +93,13 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="212" height="34.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-u9-Vjn">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="162" height="34.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="212" height="34.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-yX-IqA">
-                                                                            <rect key="frame" x="170" y="0.0" width="42" height="34.5"/>
+                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-yX-IqA">
+                                                                            <rect key="frame" x="216" y="0.0" width="0.0" height="34.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@
                                                         <constraint firstItem="3F7-ue-iYk" firstAttribute="top" secondItem="Yvt-QK-81i" secondAttribute="top" constant="5" id="XAa-Hi-qb2"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQn-cp-Bjo">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQn-cp-Bjo">
                                                     <rect key="frame" x="8" y="345" width="344" height="2"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -153,13 +153,14 @@
                                                             <rect key="frame" x="5" y="33" width="190" height="34"/>
                                                             <subviews>
                                                                 <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzP-BV-30D">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="34"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="146" height="34"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSM-MC-bSc">
-                                                                    <rect key="frame" x="155" y="0.0" width="35" height="34"/>
+                                                                    <rect key="frame" x="151" y="0.0" width="39" height="34"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                                                     <state key="normal" title="Find"/>
                                                                     <connections>
                                                                         <action selector="findWeatherButtonClicked:" destination="RDY-iM-eSv" eventType="touchUpInside" id="A8B-MT-uk4"/>
@@ -169,7 +170,7 @@
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter US City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRe-06-ajA">
                                                             <rect key="frame" x="5" y="5" width="190" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -211,11 +212,13 @@
                                             <constraint firstAttribute="trailing" secondItem="D5Y-29-Iqy" secondAttribute="trailing" constant="5" id="zbm-eu-kdK"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="bufferLine" destination="TQn-cp-Bjo" id="QEk-el-Ql2"/>
                                             <outlet property="cityName" destination="D9g-Ag-t48" id="CTC-CI-l0C"/>
                                             <outlet property="controlLabel" destination="BRe-06-ajA" id="w8R-kb-Xhg"/>
                                             <outlet property="controlView" destination="sTO-Fm-rCg" id="h3s-uI-zDA"/>
                                             <outlet property="dayName" destination="Oo2-u9-Vjn" id="eZ9-nC-QCo"/>
                                             <outlet property="dayTempView" destination="Yvt-QK-81i" id="sK3-3d-VEA"/>
+                                            <outlet property="degree" destination="39v-sg-5rb" id="PoC-J6-xdm"/>
                                             <outlet property="findWeather" destination="XSM-MC-bSc" id="qey-fr-3de"/>
                                             <outlet property="maxTemp" destination="GQ8-7J-M4Z" id="cRN-Aj-d9V"/>
                                             <outlet property="minTemp" destination="g08-WK-baK" id="Aae-1R-lpx"/>

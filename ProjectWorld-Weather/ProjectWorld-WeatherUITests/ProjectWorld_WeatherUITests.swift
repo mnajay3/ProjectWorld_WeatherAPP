@@ -2,13 +2,11 @@
 //  ProjectWorld_WeatherUITests.swift
 //  ProjectWorld-WeatherUITests
 //
-//  Created by Naga Murala on 11/9/17.
+//  Created by Naga Murala on 11/11/17.
 //  Copyright © 2017 Naga Murala. All rights reserved.
 //
 
 import XCTest
-@testable import ProjectWorldFramework
-@testable import ProjectWorld_Weather
 
 class ProjectWorld_WeatherUITests: XCTestCase {
         

@@ -33,7 +33,7 @@ class WeatherServiceInvoker: NSObject {
         //PLIST Functionality providing by ProjectWorldFramwork api.Get the Weather API key from PLIST
         let apiValue = MasterPListUtil().findPlistValue(API_KEY, resourceName: RESOURCE_NAME)
         if let apiValue = apiValue {
-            return URL(string: WEATHER_URL_STRING + "?q=\(String(describing: escapedCity))&appid=\(apiValue)")
+            return URL(string: WEATHER_URL_STRING + "?q=\(String(describing: escapedCity)),US&appid=\(apiValue)")
         }
         return nil
     }
