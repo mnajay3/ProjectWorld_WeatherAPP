@@ -24,6 +24,7 @@
 		B2AAAEA01FB536E000C0FAB4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAAE9F1FB536E000C0FAB4 /* Extensions.swift */; };
 		B2AAAEA41FB5874000C0FAB4 /* DayTemparatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAAEA31FB5874000C0FAB4 /* DayTemparatureView.swift */; };
 		B2AAAEB21FB69E2200C0FAB4 /* ProjectWorldFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2AAAEAE1FB69DEF00C0FAB4 /* ProjectWorldFramework.framework */; };
+		B2AAAEB51FB6E6B200C0FAB4 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AAAEB41FB6E6B200C0FAB4 /* WeatherDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B2AAAE9F1FB536E000C0FAB4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B2AAAEA31FB5874000C0FAB4 /* DayTemparatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTemparatureView.swift; sourceTree = "<group>"; };
 		B2AAAEA81FB69DEF00C0FAB4 /* ProjectWorldFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProjectWorldFramework.xcodeproj; path = ../ProjectWorldFramework/ProjectWorldFramework.xcodeproj; sourceTree = "<group>"; };
+		B2AAAEB41FB6E6B200C0FAB4 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				B2AAAE4B1FB4B15400C0FAB4 /* WeatherViewController.swift */,
+				B2AAAEB41FB6E6B200C0FAB4 /* WeatherDetailViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				B2AAAE8C1FB4F76500C0FAB4 /* LocationCoordinates.swift in Sources */,
 				B2AAAE8A1FB4DEB100C0FAB4 /* WeatherInfoResponse.swift in Sources */,
 				B2AAAE861FB4BEEA00C0FAB4 /* WeatherAppConstants.swift in Sources */,
+				B2AAAEB51FB6E6B200C0FAB4 /* WeatherDetailViewController.swift in Sources */,
 				B2AAAE4A1FB4B15400C0FAB4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

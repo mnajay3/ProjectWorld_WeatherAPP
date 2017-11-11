@@ -2,7 +2,7 @@
 //  MasterListConstants.swift
 //  ProjectWorldFramework
 //
-//  Created by Naga Murala on 9/27/17.
+//  Created by Naga Murala on 11/11/17.
 //  Copyright © 2017 Naga Murala. All rights reserved.
 //
 
@@ -17,16 +17,10 @@ public let VIEW_NAME                = "viewName"
 public let STORY_BOARD              = "storyBoard"
 public let INFO                     = "Info"
 public let PLIST                    = "plist"
-
-public let ATM_LOCATIONS_URL        = "https://m.chase.com/PSRWeb/location/list.action?"
-public let LATITUDE                 = "lat="
-public let LONGITUDE                = "lng="
 public let AND                      = "&"
 public let EQUAL                    = "="
 
 
 public class MasterListConstants {
-    public init() {
-        
-    }
+    public init() {}
 }

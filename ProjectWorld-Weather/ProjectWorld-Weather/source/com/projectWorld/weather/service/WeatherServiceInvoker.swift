@@ -11,10 +11,7 @@ import UIKit
 import ProjectWorldFramework
 
 typealias JSON = [String: AnyObject]
-protocol WeatherServiceInvokerDelegate {
-    //delegate method, Whic is used for assignments.
-    func setWeatherInformation(json: JSON)
-}
+
 //Singleton desing Pattern
 //I am using Singleton pattern, since I don't want to allow clients to create multiple object to rushOver the my service invoker.
 //It acts lik a pipe with only one bus that will transform the data (Client - Server)
@@ -25,9 +22,6 @@ class WeatherServiceInvoker: NSObject {
     fileprivate static let singltonObject = WeatherServiceInvoker()
     //Made the Init method private to conform to Singleton pattern
     private override init() { super.init() }
-    //delegte, Every client should delegate themselves to this property to conform to the protocol methods
-    var serviceDelegate: WeatherServiceInvokerDelegate?
-    
     
     func searchURLByCity(city: String) -> URL? {
         let escapedCityString = city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -36,7 +30,7 @@ class WeatherServiceInvoker: NSObject {
             print("ProjectWorld:Something wrong in the URL")
             return nil
         }
-        //Get the Weather API key from PLIST
+        //PLIST Functionality providing by ProjectWorldFramwork api.Get the Weather API key from PLIST
         let apiValue = MasterPListUtil().findPlistValue(API_KEY, resourceName: RESOURCE_NAME)
         if let apiValue = apiValue {
             return URL(string: WEATHER_URL_STRING + "?q=\(String(describing: escapedCity))&appid=\(apiValue)")
@@ -55,19 +49,11 @@ class WeatherServiceInvoker: NSObject {
     func getWeatherInformation(url: URL?, completion: @escaping (Data) -> ()) {
         //Using guard, Safe unwrapping the optional value to avoid nil value unwrapping and unwanted app crashes
         guard let url = url else { return }
-        //Using URLSession for network call by passing url. It's a task management(multiThreading), excute the url in backgroung thread. Once we get the response(data, response, error). We have to handle it and get the Main thread to the top to update the User Interactive information.
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "Error while invoking the service")
-                return
-            }
-            guard let data = data else {
-                print(error?.localizedDescription ?? "Error in network data")
-                return
-            }
+        masterTaskMgmt.performTask(url: url, block: {
+            //NOOP
+        }) { (data) in
             completion(data)
-            
-            }.resume()  //Make sure to resume the service task to get invoked
+        }
     }
 }
 

@@ -36,6 +36,9 @@ class WeatherViewController: MasterViewController,UICollectionViewDelegate,UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pageName = "WeatherMainViewController"
+        self.segueAlias = "weatherDetails"
+        
         setCollectionViewConfigurations()
         self.view.addSubview(activityIndicator)
         self.view.addConstraint(NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0))

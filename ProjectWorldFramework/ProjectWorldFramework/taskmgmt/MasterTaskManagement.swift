@@ -11,43 +11,35 @@ import Foundation
 public var masterTaskMgmt : MasterTaskManagement {
     return MasterTaskManagement.sharedInstance
 }
+
 public typealias JSON = [String:Any]
+
 //BLOCK enables user to perform any action immediate after refreshing with the response object from service call
 public typealias BLOCK = () -> ()
-// delegate confirmation to prepare url before calling the perform task
-public protocol MasterTaskManagementDelegate {
-    func prepareServiceURL() -> URL?
-}
 
-//This class is not intended to inherit. 
-//Enabling this functionalities only for consumption
+//This class is not intended to override. 
+//Enabling this functionalities only for client consumption
 public class MasterTaskManagement {
     private init(){ }
     fileprivate static var sharedInstance = MasterTaskManagement()
-    public var serviceDelegate: MasterTaskManagementDelegate?
-    public func performTask(delegate: MasterTaskManagementDelegate,
-                            block:@escaping BLOCK, completion:@escaping (Data) -> ()) {
-        self.serviceDelegate = delegate
+    //Using URLSession for network call by passing url. It's a task management(multiThreading), excute the url in backgroung thread. Once we get the response(data, response, error). We have to handle it and get the Main thread to the top to update the User Interactive information.
+    //All these activities are being done on background threads. Client has to make sure to update the userinterface related activities has to run on the mainthred
+    public func performTask(url: URL?, block:@escaping BLOCK, completion:@escaping (Data) -> ())
+    {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        guard let url = self.prepareURLFromDelegate() else { return }
+        guard let url = url else { return }
         session.dataTask(with: url){ (data,response,error) in
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "Error occured during the networking call")
                 return
             }
             guard let data = data else {
                 print(error?.localizedDescription ?? "Error in Network Data")
                 return
             }
-            completion(data)
-            block()
+                block()
+                completion(data)
             }.resume()
     }
-    
-    public func prepareURLFromDelegate() -> URL? {
-        guard let taskMgmtDelegate = self.serviceDelegate else { return nil }
-        return taskMgmtDelegate.prepareServiceURL()
-    }
-    
 }
