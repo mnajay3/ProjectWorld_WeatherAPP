@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>pageConfigurations</key>
+        <dict>
+            <key>WeatherMainViewController</key>
+            <dict>
+                <key>segues</key>
+                <dict>
+                    <key>weatherDetails</key>
+                    <dict>
+                        <key>storyBoard</key>
+                        <string>Main</string>
+                        <key>viewName</key>
+                        <string>weatherInformation</string>
+                        <key>destinationVC</key>
+                        <string>WeatherDetailViewController</string>
+                    </dict>
+                </dict>
+            </dict>
+        </dict>
+        <key>WeatherAPIKey</key>
+        <string>42d4008c153e332cdbf908fa26df1d2e</string>
+    </dict>
+</plist>
+

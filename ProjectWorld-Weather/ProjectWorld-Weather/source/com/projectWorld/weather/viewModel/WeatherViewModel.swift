@@ -28,7 +28,7 @@ class WeatherViewModel: NSObject {
         weatherService.getWeatherInformation(url: url) { (resultData) in
             do {
                 guard  let json = try JSONSerialization.jsonObject(with: resultData, options: []) as? JSON else { return }
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [unowned self] in
                     //Calling the delegate method first to have some brushups before calling the completion block
                     self.setWeatherInformation(json : json)
                     //Most of the cases, we use it for UI updates after finishing the service call
@@ -46,6 +46,7 @@ class WeatherViewModel: NSObject {
          KVO:KeyValue Observing design pattern
          Here I am following KVO pattern
          **/
+        print(json)
         self.weatherInfoResponse = WeatherInfoResponse(json: json)
     }
     

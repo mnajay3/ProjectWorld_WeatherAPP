@@ -11,7 +11,7 @@ import Foundation
 public let EMPTY_STRING             = ""
 public let PAGE_CONFIGURATION       = "pageConfigurations"
 public let KEY_CONFIGURATION        = "keyConfigurations"
-public let MASTER_INFO_RESOURCE     = "MasterInfo"
+public let MASTER_INFO_RESOURCE     = "WeatherInfo"
 public let SEGUES                   = "segues"
 public let VIEW_NAME                = "viewName"
 public let STORY_BOARD              = "storyBoard"
