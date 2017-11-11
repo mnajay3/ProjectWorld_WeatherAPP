@@ -8,6 +8,24 @@
 
 import Foundation
 
+extension UIApplication {
+    var statusBarView : UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}
+
+extension UIView {
+    func addConstraintsWithTheFormat(format: String, views: UIView...) {
+        var viewsDictionary = [String: UIView]()
+        for (index, view) in views.enumerated() {
+            let key = "v\(index)"
+            viewsDictionary[key] = view
+        }
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
+    }
+}
+
+
 extension String {
     
     public func toMiles() -> String? {
@@ -19,15 +37,6 @@ extension String {
         guard let skmInt = Double(stringWithoutChars!) else { return "" }
         let miles = Float(skmInt * 0.621371)
         return "\(miles) Miles"
-    }
-    
-    
-    public func toCharArray() -> [Character]? {
-        var stringChars: [Character] = [Character]()
-        for char in self.characters {
-            stringChars.append(char)
-        }
-        return stringChars
     }
     
 }

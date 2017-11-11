@@ -12,8 +12,9 @@ import UIKit
 public let WEATHER_URL_STRING = "http://samples.openweathermap.org/data/2.5/weather"
 public let WEATHER_ICON_URL_STRING = "http://openweathermap.org/img/w/"
 //?q=London,uk&appid=42d4008c153e332cdbf908fa26df1d2e"
-public let API_KEY = "42d4008c153e332cdbf908fa26df1d2e"
+public let API_KEY = "WeatherAPIKey"
 public let CITY_NAME = "cityName"
+public let RESOURCE_NAME = "WeatherInfo"
 
 class WeatherAppConstants: NSObject {
 

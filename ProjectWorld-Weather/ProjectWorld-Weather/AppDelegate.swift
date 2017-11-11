@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProjectWorldFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
