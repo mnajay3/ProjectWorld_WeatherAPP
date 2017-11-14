@@ -28,21 +28,53 @@ class ProjectWorld_WeatherUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testHappyPath() {
+        
+        let themeCollectionView = XCUIApplication().collectionViews.containing(.image, identifier:"theme").element
+        themeCollectionView.tap()
+        themeCollectionView.tap()
+        themeCollectionView.tap()
+        themeCollectionView.tap()
+        
+    }
+    func testWeatherwithValidCity() {
+        
         let app = XCUIApplication()
-        app.otherElements.containing(.button, identifier:"WeatherInformation").children(matching: .collectionView).element.tap()
+        app.collectionViews.containing(.image, identifier:"theme").element.tap()
+        
         let collectionViewsQuery = app.collectionViews
         let textField = collectionViewsQuery.cells.otherElements.containing(.staticText, identifier:"London").children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .textField).element
+        textField.waitForExistence(timeout: 2)
         textField.tap()
-        textField.waitForExistence(timeout: 3)
-        textField.typeText("London")
+        textField.waitForExistence(timeout: 2)
+        textField.typeText("San Antonio")
+        textField.waitForExistence(timeout: 2)
         collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Find"]/*[[".cells.buttons[\"Find\"]",".buttons[\"Find\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        textField.waitForExistence(timeout: 2)
+        
+    }
+    
+    func testWeatherWithEmptyCity() {
+        
+        let app = XCUIApplication()
+        app.collectionViews.containing(.image, identifier:"theme").element.tap()
+        app.collectionViews/*@START_MENU_TOKEN@*/.buttons["Find"]/*[[".cells.buttons[\"Find\"]",".buttons[\"Find\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Required"].buttons["Click"].tap()
+    }
+    
+    func testWeatherNavigateNextScreen() {
+        let app = XCUIApplication()
+        let collectionView = app.otherElements.containing(.button, identifier:"WeatherInformation").children(matching: .collectionView).element
+        collectionView.waitForExistence(timeout: 2.0)
+        collectionView.tap()
+        collectionView.waitForExistence(timeout: 2.0)
+        collectionView.tap()
         app.buttons["WeatherInformation"].tap()
+        app.waitForExistence(timeout: 2.0)
+        app.waitForExistence(timeout: 2.0)
         app.buttons["Back"].tap()
+        app.waitForExistence(timeout: 2.0)
         
-        
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
 }
