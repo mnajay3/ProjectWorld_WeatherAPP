@@ -1,14 +1,14 @@
 //
-//  ProjectWorld_WeatherUITests.swift
-//  ProjectWorld-WeatherUITests
+//  ProjectWorld_WeatherRegenerateUITests.swift
+//  ProjectWorld-WeatherRegenerateUITests
 //
-//  Created by Naga Murala on 11/11/17.
+//  Created by Naga Murala on 11/12/17.
 //  Copyright © 2017 Naga Murala. All rights reserved.
 //
 
 import XCTest
 
-class ProjectWorld_WeatherUITests: XCTestCase {
+class ProjectWorld_WeatherRegenerateUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -29,18 +29,6 @@ class ProjectWorld_WeatherUITests: XCTestCase {
     }
     
     func testExample() {
-        let app = XCUIApplication()
-        app.otherElements.containing(.button, identifier:"WeatherInformation").children(matching: .collectionView).element.tap()
-        let collectionViewsQuery = app.collectionViews
-        let textField = collectionViewsQuery.cells.otherElements.containing(.staticText, identifier:"London").children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .textField).element
-        textField.tap()
-        textField.waitForExistence(timeout: 3)
-        textField.typeText("London")
-        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["Find"]/*[[".cells.buttons[\"Find\"]",".buttons[\"Find\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["WeatherInformation"].tap()
-        app.buttons["Back"].tap()
-        
-        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

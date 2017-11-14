@@ -28,7 +28,7 @@ class LocationCoordinates: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        var jsonObj = JSON()
+        let jsonObj = JSON()
 //        jsonObj["name"] = aDecoder.decodeObject(forKey: "name") as AnyObject
         self.init(json: jsonObj)
     }
@@ -60,7 +60,7 @@ class Weather: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        var jsonObj = JSON()
+        let jsonObj = JSON()
 //        jsonObj["name"] = aDecoder.decodeObject(forKey: "name") as AnyObject
         self.init(json: jsonObj)
     }
@@ -119,7 +119,7 @@ class Wind: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        var jsonObj = JSON()
+        let jsonObj = JSON()
 //        jsonObj["name"] = aDecoder.decodeObject(forKey: "name") as AnyObject
         self.init(json: jsonObj)
     }
@@ -142,7 +142,7 @@ class Cloud: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        var jsonObj = JSON()
+        let jsonObj = JSON()
 //        jsonObj["name"] = aDecoder.decodeObject(forKey: "name") as AnyObject
         self.init(json: jsonObj)
     }
@@ -170,7 +170,7 @@ class SystemInternal: NSObject, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        var jsonObj = JSON()
+        let jsonObj = JSON()
 //        jsonObj["name"] = aDecoder.decodeObject(forKey: "name") as AnyObject
         self.init(json: jsonObj)
     }
