@@ -18,6 +18,8 @@
 		B202DEE11F7CA98700DBD837 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202DEE01F7CA98700DBD837 /* MasterViewController.swift */; };
 		B202DEE31F7CA99C00DBD837 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202DEE21F7CA99C00DBD837 /* StringExtensions.swift */; };
 		B202DF311F7CB74B00DBD837 /* MasterTaskManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B202DF301F7CB74B00DBD837 /* MasterTaskManagement.swift */; };
+		B256FCCE1FCFAAC200B2534A /* MasterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B256FCCD1FCFAAC200B2534A /* MasterCollectionViewCell.swift */; };
+		B29360CF1FCD15F2000EEA1D /* MasterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29360CE1FCD15F2000EEA1D /* MasterCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		B202DEE01F7CA98700DBD837 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = main/MasterViewController.swift; sourceTree = "<group>"; };
 		B202DEE21F7CA99C00DBD837 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = extension/StringExtensions.swift; sourceTree = "<group>"; };
 		B202DF301F7CB74B00DBD837 /* MasterTaskManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterTaskManagement.swift; path = taskmgmt/MasterTaskManagement.swift; sourceTree = "<group>"; };
+		B256FCCD1FCFAAC200B2534A /* MasterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterCollectionViewCell.swift; path = collectionViewCell/MasterCollectionViewCell.swift; sourceTree = "<group>"; };
+		B29360CE1FCD15F2000EEA1D /* MasterCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MasterCollectionView.swift; path = collectionView/MasterCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				B202DEDE1F7CA97700DBD837 /* MasterTableView.swift */,
+				B29360CE1FCD15F2000EEA1D /* MasterCollectionView.swift */,
 			);
 			name = collectionView;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				B202DEDC1F7CA96900DBD837 /* MasterTableViewCell.swift */,
+				B256FCCD1FCFAAC200B2534A /* MasterCollectionViewCell.swift */,
 			);
 			name = collectionViewCell;
 			sourceTree = "<group>";
@@ -297,9 +303,11 @@
 				B202DF311F7CB74B00DBD837 /* MasterTaskManagement.swift in Sources */,
 				B202DEE11F7CA98700DBD837 /* MasterViewController.swift in Sources */,
 				B202DEDA1F7CA8F600DBD837 /* MasterPListUtil.swift in Sources */,
+				B256FCCE1FCFAAC200B2534A /* MasterCollectionViewCell.swift in Sources */,
 				B202DED91F7CA8F600DBD837 /* MasterListConstants.swift in Sources */,
 				B202DEDD1F7CA96900DBD837 /* MasterTableViewCell.swift in Sources */,
 				B202DEDB1F7CA8F600DBD837 /* MasterPropertyManager.swift in Sources */,
+				B29360CF1FCD15F2000EEA1D /* MasterCollectionView.swift in Sources */,
 				B202DEDF1F7CA97700DBD837 /* MasterTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

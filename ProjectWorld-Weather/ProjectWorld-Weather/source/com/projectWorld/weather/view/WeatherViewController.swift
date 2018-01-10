@@ -2,15 +2,15 @@
 //  ViewController.swift
 //  ProjectWorld-Weather
 //
-//  Created by Naga Murala on 11/9/17.
-//  Copyright © 2017 Naga Murala. All rights reserved.
+//  Created by Naga Murala on 01/09/18.
+//  Copyright © 2018 Naga Murala. All rights reserved.
 //
 
 import UIKit
 import ProjectWorldFramework
 /***
  //MVVM design Pattern
- Initial view controller follows MVVM design pattern by tightly coupling the ViewModel with View(ViewController).
+ Initial view controller follows MVVM DESIGN PATTERN by tightly coupling the ViewModel with View(ViewController).
  This Contoller performs only high level operatios include triggering the view model to fetch all the network information. Intern view model map the information to the model object
  ***/
 
@@ -23,22 +23,12 @@ import ProjectWorldFramework
      I would follow the same way for collection view behaviour so that we can reduce the burder even more from this view(viewcontroller)
  
  //TODO:
- I selected to use USERDEFAULTS to store the last save search in stead of PLIST, CoreData or any database. The main reason is the data size is very small, and have to store only one record.
-        Why not PLIST: It's not considerably big unrelated data and every time we store it in plist, it fetches all the records from plist and loads it into memory.
-        Why not Coredata: It's not complex structure to maintain and much relations included
-        Why not keychain: It's not secure data.
-     Note:
-        1. I wouldn't prefer the way I store it into UserDefaults rather I would use the feature of NSCoding. But bit difficult in this situation. Reason: The Weather response object is having complex model(nested objects), Need some more time to achieve the approcha. I started this appproch for a proof of concept
-        2. Really I don't like the way I store the image rather I would store the image in Document library, Commented the same in WeatherMainCollectionViewCell.
- 
- //TODO:
-Serielizing the json object: I know swift4 provides a best of serielizing the response data and mapping it to model object by using Codable(Encoding,Deconding) protocol, Infact this is more efficient interms of implementation and as well as bydefault it comes with encoded and decoded data. It's very easy/straight forward to set the  complete response object into UserDefaults.
-     Reason for KVO approach: I thought to follow some lagacy methodology to set the response json into model, so that I can project my technical depth in coding.
-     But I would use Swift Codable protocol, So that my life would be easy to store encoded object into userdefaults
+ ViewModal is taking care of all the business logic. Either view controller or table view cell(view) doesn't any thing about what's happening inside. let's say for instance
+ Weather api won't get called every time member clicks on find button with same city.. We have a control in view modal where it check's the time interval between previous search and current search.. if it exceeds 4 hours with the same city then call api other wise fetch it from the previous returned object where we store it in userdefaults.
  
  
  //TODO:
- As I mentioned in previous comment, I would change the collectionView pattern. Main thin is about Collectionview cell. I am feeling it's so clumsy. I would use all cusom views(classes) for each group of UIattributes. All string literal I would rather declare it in constants file so that the could will be very clean and interactive.
+ I would change the collectionView pattern. Main thin is about Collectionview cell. I am feeling it's so clumsy. I would use all cusom views(classes) for each group of UIattributes. All string literal I would rather declare it in constants file so that the could will be very clean and interactive.
  
  //TODO:
  I am trying to use Interface builder features Autoconstraints, StackViews and size classes along with Custom UI objects and custom constraints through program. I agree, It's bit easy to add the constraints through Interface builder but adding custom attributes and constraints improves our technical ability and brush up our skills in all the aspects
@@ -167,7 +157,7 @@ class WeatherViewController: MasterViewController,UICollectionViewDelegate,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let _cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! WeatherMainCollectionViewCell
         _cell.findWeatherDelegate = self
-        _cell.configureCollectionViewCell(data: viewModel.weatherInfoResponse)
+        _cell.configureCollectionViewCell(data: viewModel)
         return _cell
     }
     

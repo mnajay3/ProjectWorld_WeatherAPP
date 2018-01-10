@@ -2,8 +2,8 @@
 //  WeatherMainCollectionViewCell.swift
 //  ProjectWorld-Weather
 //
-//  Created by Naga Murala on 11/9/17.
-//  Copyright © 2017 Naga Murala. All rights reserved.
+//  Created by Naga Murala on 01/09/18.
+//  Copyright © 2018 Naga Murala. All rights reserved.
 //
 
 import UIKit
@@ -28,10 +28,9 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var bufferLine: UIView!
     @IBOutlet weak var degree: UILabel!
-    //To persist user's last saved search
-    lazy var persistLastSearch: UserDefaults = UserDefaults.standard
     var isContentViewHidden: Bool = true
     var findWeatherDelegate: FindWeatherDelegate?
+    var data : WeatherInfoResponse?
     let imageView:UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -50,99 +49,69 @@ class WeatherMainCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
         configureCollectionViewCell()
     }
     
-    
-    func configureCollectionViewCell(data: WeatherInfoResponse? = nil) {
+    func configureCollectionViewCell(data: WeatherViewModel? = nil) {
         if textField != nil {
             textField.delegate = self
         }
         addGestureConfiguratios()
-        setDataToView(data)
+        self.data = data?.weatherInfoResponse
+        setDataToView()
     }
     
-    func setDataToView(_ data: WeatherInfoResponse?)  {
+    func setDataToView()  {
         if self.cityName != nil {
             if let cityName = data?.name {
                 self.cityName.text = cityName
-                persistLastSearch.set(cityName, forKey: CITY_NAME)
-            } else if let cityName = persistLastSearch.value(forKey: CITY_NAME) {
-                self.cityName.text = cityName as? String ?? ""
             }
         }
         if self.weatherStatus != nil {
             if let weather = data?.weather, weather.count > 0, let mainStatus = weather[0].main{
                 self.weatherStatus.text = mainStatus
-                persistLastSearch.set(mainStatus, forKey: "weather")
-            } else if let weather = persistLastSearch.value(forKey: "weather") {
-                self.weatherStatus.text = weather as? String ?? ""
             }
         }
         if self.temparature != nil {
             if let temp = data?.main?.temp {
                 self.temparature.text = getConvertedTemp(temp: temp)
                 self.degree.isHidden = false
-                persistLastSearch.set(temp, forKey: "temp")
-            } else if let temp = persistLastSearch.value(forKey: "temp") {
-                if let temp = temp as? NSNumber {
-                    self.temparature.text = getConvertedTemp(temp: temp)
-                    self.degree.isHidden = false
-                }
-                
             }
         }
         if self.todayLabel != nil {
             todayLabel.text = "Today"
         }
         if self.dayName != nil {
-            if let weekDayName = data?.weekDayName {
-                self.todayLabel.isHidden = false
-                self.dayName.text = weekDayName
-                persistLastSearch.set(weekDayName, forKey: "weekDayName")
-            } else if let weekDayName = persistLastSearch.value(forKey: "weekDayName") {
-                self.dayName.text = weekDayName as? String ?? ""
+            if let timeInterval = data?.dt {
+                let date = Date(timeIntervalSince1970: timeInterval)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat  = "EEEE"//"EE" to get short style
+                self.dayName.text = dateFormatter.string(from: date)//"Sunday"
                 self.todayLabel.isHidden = false
             }
         }
         if self.minTemp != nil {
             if let temp = data?.main?.temp_min {
                 self.minTemp.text = getConvertedTemp(temp: temp)
-                persistLastSearch.set(temp, forKey: "temp_min")
-            } else if let temp = persistLastSearch.value(forKey: "temp_min") {
-                if let temp = temp as? NSNumber {
-                    self.minTemp.text = getConvertedTemp(temp: temp)
-                }
             }
         }
         if self.maxTemp != nil {
             if let temp = data?.main?.temp_max {
                 self.maxTemp.text = getConvertedTemp(temp: temp)
-                persistLastSearch.set(temp, forKey: "temp_max")
                 self.bufferLine.isHidden = false
-            } else if let temp = persistLastSearch.value(forKey: "temp_max") {
-                if let temp = temp as? NSNumber {
-                    self.maxTemp.text = getConvertedTemp(temp: temp)
-                    self.bufferLine.isHidden = false
-                }
             }
         }
         if self.weatherIcon != nil {
-            if let image = data?.imageIcon {
-                self.weatherIcon.image = image
-                self.weatherIcon.translatesAutoresizingMaskIntoConstraints = false
-                self.weatherIcon.tintColor = UIColor(white: 1, alpha: 0.4)
-                ///               While it is possible to save a UIImage to NSUserDefaults, it is often not recommended as it is not        the most efficient way to save images; a more efficient way is to save your image in the application's Documents Directory
-                ///
-                persistLastSearch.set(UIImagePNGRepresentation(image), forKey: "imageIcon")
-            }else if let imageData = persistLastSearch.object(forKey: "imageIcon") ,
-                let image = UIImage(data: imageData as! Data){
-                self.weatherIcon.image = image
-                self.weatherIcon.translatesAutoresizingMaskIntoConstraints = false
-                self.weatherIcon.tintColor = UIColor(white: 1, alpha: 0.4)
+            if let vc = findWeatherDelegate as? WeatherViewController {
+                if let image = vc.viewModel.weatherImage {
+                    self.weatherIcon.image = image
+                    self.weatherIcon.translatesAutoresizingMaskIntoConstraints = false
+                    self.weatherIcon.tintColor = UIColor(white: 1, alpha: 0.4)
+                }
+                
             }
         }
     }
     
-    func getConvertedTemp(temp: NSNumber) -> String {
-        let tempKelvin = Double(truncating: temp)
+    func getConvertedTemp(temp: Double) -> String {
+        let tempKelvin = temp
         let tempCelcius = Int(tempKelvin - 273.15)
         return "\(tempCelcius)"
     }
